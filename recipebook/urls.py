@@ -17,11 +17,13 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from ledger.views import recipe_list, recipe1, recipe2
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ledger/', include('ledger.urls', namespace='ledger')),
-    path('recipes/list/', include('ledger.urls', namespace='recipe_list')),
-    path('recipe/1/', include('ledger.urls', namespace='recipe1')),
-    path('recipe/2/', include('ledger.urls', namespace='recipe2')),
+    path('recipes/list/', recipe_list, name='recipe_list'),
+    path('recipe/1/', recipe1, name='recipe1'),
+    path('recipe/2/', recipe2, name='recipe2'),
 ]
+

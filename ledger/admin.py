@@ -16,6 +16,11 @@ class RecipeIngredientAdmin(admin.ModelAdmin):
 
 class IngredientAdmin(admin.ModelAdmin):
     list_display = ('name',)
+    
+admin.site.register(Recipe, RecipeAdmin)
+admin.site.register(Ingredient, IngredientAdmin)
+admin.site.register(RecipeIngredient, RecipeIngredientAdmin)
+
 
 class RecipeAdmin(admin.ModelAdmin):
     list_display = ('name', 'created_at', 'updated_at')
