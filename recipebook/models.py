@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 class Ingredient(models.Model):
     name = models.CharField(max_length=255)
 
@@ -20,4 +19,3 @@ class RecipeIngredient(models.Model):
 
     def __str__(self):
         return f"{self.quantity} {self.ingredient} in {self.recipe}"
-

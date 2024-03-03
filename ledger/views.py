@@ -1,6 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Recipe, Ingredient, RecipeIngredient
 
+def recipe_list(request):
+    recipes = Recipe.objects.all()
+    ctx = {"recipes": recipes}
+    return render(request, 'recipe_list.html', ctx)
+
+def recipe_detail(request, pk):
+    recipe = Recipe.objects.get(pk=pk)
+    template_name = f'recipe_{pk}.html'
+    ctx = {"recipe": recipe}
+    return render(request, f'recipe_{pk}.html', ctx)
 
 def recipe_list(request):
     ctx = {
@@ -69,7 +80,7 @@ def recipe_list(request):
         }
     return render(request, 'recipe_list.html', ctx)
 
-def recipe_1(request):
+def recipe1(request):
     ctx = {
             "name": "Recipe 1",
             "ingredients": [
@@ -98,7 +109,7 @@ def recipe_1(request):
         }
     return render(request, "recipe_1.html", ctx)
 
-def recipe_2(request):
+def recipe2(request):
     ctx = {
             "name": "Recipe 2",
             "ingredients": [
