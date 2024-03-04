@@ -3,13 +3,18 @@ from .models import Recipe, Ingredient, RecipeIngredient
 
 # Register your models here.
 
-class RecipeAdmin(admin.ModelAdmin):
-    list_display = ('name', 'created_at', 'updated_at')
-    search_fields = ('name',)
-
 class RecipeIngredientInline(admin.TabularInline):  
     model = RecipeIngredient
     extra = 1  
+
+class RecipeAdmin(admin.ModelAdmin):
+    list_display = ('name', 'created_at', 'updated_at')
+    search_fields = ('name',)
+    inlines = [RecipeIngredientInline]
+
+# class RecipeAdmin(admin.ModelAdmin):
+#     list_display = ('name', 'created_at', 'updated_at')
+#     search_fields = ('name',)
 
 class RecipeIngredientAdmin(admin.ModelAdmin):
     list_display = ('recipe', 'ingredient', 'quantity')
@@ -22,7 +27,4 @@ admin.site.register(Ingredient, IngredientAdmin)
 admin.site.register(RecipeIngredient, RecipeIngredientAdmin)
 
 
-class RecipeAdmin(admin.ModelAdmin):
-    list_display = ('name', 'created_at', 'updated_at')
-    search_fields = ('name',)
-    inlines = [RecipeIngredientInline]
+
