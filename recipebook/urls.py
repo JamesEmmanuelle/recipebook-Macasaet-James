@@ -15,15 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.contrib import admin
 from django.urls import path, include
-from ledger.views import recipe_list, recipe1, recipe2
+from ledger.views import RecipeListView, RecipeDetailView
+from django.contrib import admin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ledger/', include('ledger.urls', namespace='ledger')),
-    path('recipes/list/', recipe_list, name='recipe_list'),
-    path('recipe/1/', recipe1, name='recipe1'),
-    path('recipe/2/', recipe2, name='recipe2'),
+    path('recipes/list/', RecipeListView.as_view(), name='recipe_list'),
+    path('recipes/<int:pk>/', RecipeDetailView.as_view(), name='recipe-detail'),
 ]
 
