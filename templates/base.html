@@ -14,5 +14,9 @@
             <a href="{% url 'login' %}">Login</a>
         {% endif %}
     </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
 </body>
 </html>
