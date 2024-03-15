@@ -3,7 +3,6 @@ from django.db import models
 
 class Profile(models.Model):
     name = models.CharField(max_length = 50)
-    short_bio = models.TextFiled()
 
 class Recipe(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
